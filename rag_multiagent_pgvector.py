@@ -15,14 +15,6 @@ def get_embedding(text: str) -> List[float]:
         response = ollama.embeddings(model="nomic-embed-text",prompt=text)
         return response['embedding']
 
-def get_embedding_and_usage(text: str):
-        response = ollama.embeddings(model="nomic-embed-text", prompt=text)
-        return {
-            "embedding": response['embedding'],
-            "token_usage": len(text.split())  # Simple token count estimation
-        }
-
-# Define the dimensions attribute for the get_embedding function
 get_embedding.dimensions = 768  # Replace 768 with the actual dimension size if different
 
 knowledge_base = PDFUrlKnowledgeBase(
